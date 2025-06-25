@@ -9,7 +9,7 @@ from pathlib import Path
 from db_conn import get_oracle_connection
 import socket
 
-# File paths
+# File paths 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOGO_PATH = os.path.join(BASE_DIR, 'SAIL_Logo.png')
 CSV_PATH = os.path.join(BASE_DIR, 'credentials.csv')

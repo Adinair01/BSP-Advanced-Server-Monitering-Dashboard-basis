@@ -352,32 +352,7 @@ def highlight_status(row):
     return [f"background-color: {color}"] * len(row)
 
 @st.cache_data(ttl=300)
-def fetch_tablespace_data(env, db):
-    try:
-        conn = get_oracle_connection(env, db)
-        cursor = conn.cursor()
-        cursor.execute(TABLESPACE_QUERY)
-        cols = [desc[0] for desc in cursor.description]
-        data = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        return pd.DataFrame(data, columns=cols)
-    except Exception as e:
-        st.error(f"Error fetching tablespace data: {e}")
-        return pd.DataFrame()
 
-@st.cache_data(ttl=300)
-def fetch_sessions_data(env, db):
-    try:
-        conn = get_oracle_connection(env, db)
-        cursor = conn.cursor()
-        cursor.execute(SESSIONS_QUERY)
-        cols = [desc[0] for desc in cursor.description]
-        data = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        return pd.DataFrame(data, columns=cols)
-    except Exception as e:
         st.error(f"Error fetching sessions data: {e}")
         return pd.DataFrame()
 
@@ -615,22 +590,7 @@ def database_monitoring_tab():
         st.info("Please select a database.")
 
 def sessions_monitoring_tab():
-    st.markdown("### 👥 Oracle Database Sessions Monitoring")
-    
-    # Database selection
-    col1, col2 = st.columns(2)
-    with col1:
-        selected_env = st.selectbox("Select Environment", list(DB_CONFIGS.keys()), key="sessions_env")
-    with col2:
-        db_list = DB_CONFIGS[selected_env]
-        selected_db = st.selectbox("Select Database", db_list, key="sessions_db")
-
-    if selected_db:
-        db_name, ip_address = fetch_db_info(selected_env, selected_db)
-        st.markdown(f"""
-        <div style='background: linear-gradient(145deg, #1565C0, #1E88E5); border: 1px solid #42A5F5; border-radius: 8px; padding: 12px; margin: 10px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.2);'>
-            <div style='display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;'>
-                <span style='color: #FFFFFF; font-size: 0.9rem;'><strong>Environment:</strong> <span style='color: #FFFFFF;'>{selected_env}</span></span>
+yle='color: #FFFFFF; font-size: 0.9rem;'><strong>Environment:</strong> <span style='color: #FFFFFF;'>{selected_env}</span></span>
                 <span style='color: #FFFFFF ; font-size: 0.9rem;'><strong>Database:</strong> <span style='color: #FFFFFF ;'>{selected_db}</span></span>
                 <span style='color: #FFFFFF ; font-size: 0.9rem;'><strong>DB Name:</strong> <span style='color: #FFFFFF ;'>{db_name}</span></span>
                 <span style='color: #FFFFFF ; font-size: 0.9rem;'><strong>Server IP:</strong> <span style='color: #FFFFFF ;'>{ip_address}</span></span>

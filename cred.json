@@ -1,0 +1,39 @@
+{
+    "Development": {
+      "rundb1": {
+        "user": "trainee",
+        "password": "trainee",
+        "dsn": "10.145.1.235:1522/rundb1"
+      },
+      "rundb2": {
+        "user": "trainee",
+        "password": "trainee",
+        "dsn": "10.145.1.235:1522/rundb2"
+      }
+    },
+    "Testing": {
+      "TestDB1": {
+        "user": "your_test_user1",
+        "password": "your_test_password1",
+        "dsn": "your_test_dsn1"
+      },
+      "TestDB2": {
+        "user": "your_test_user2",
+        "password": "your_test_password2",
+        "dsn": "your_test_dsn2"
+      }
+    },
+    "Production": {
+      "ProdDB1": {
+        "user": "your_prod_user1",
+        "password": "your_prod_password1",
+        "dsn": "your_prod_dsn1"
+      },
+      "ProdDB2": {
+        "user": "your_prod_user2",
+        "password": "your_prod_password2",
+        "dsn": "your_prod_dsn2"
+      }
+    }
+  }
+  

@@ -1,0 +1,7 @@
+to run tablespace.py
+
+[dashboard@bspapp2 ~]$ ./.local/bin/streamlit run /dashboard/dash/BSP_Internship/tablespace.py
+
+
+to run app.py
+

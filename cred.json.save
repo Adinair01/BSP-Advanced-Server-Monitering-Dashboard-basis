@@ -1,0 +1,9 @@
+{
+  "Production": {
+    "Rundb1": {
+      "user": "train",
+      "password": "trainee",
+      "dsn": "10.145.1.235:1522/rundb1"
+    }
+  }
+}
